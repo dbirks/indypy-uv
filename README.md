@@ -8,6 +8,7 @@
   - [Project commands](#project-commands)
   - [Scripts with inline dependencies](#scripts-with-inline-dependencies)
   - [Docker](#docker)
+  - [Github Actions](#github-actions)
 
 ## Docs
 
@@ -42,7 +43,17 @@ uv documentation: https://docs.astral.sh/uv
   - `uv run <script>`
   - `uv add --script <script>`
   - `uv sync --script <script>`
+  - Putting this shebang at the top of the script allows you to run it without an explicit `uv run`: `#!/usr/bin/env -S uv run`
 
 ## Docker
   - uv docs: [Using uv in Docker](https://docs.astral.sh/uv/guides/integration/docker/)
   - `COPY --from=ghcr.io/astral-sh/uv:0.6.14 /uv /uvx /bin/`
+
+## Github Actions
+
+```yaml
+- name: Setup uv
+  uses: astral-sh/setup-uv@v5
+  with:
+    enable-cache: true
+```
